@@ -93,7 +93,8 @@ alias m173='mount -t smbfs //webs:sohu.hd@10.10.78.10/173 ~/173/'
 alias webs='mount -t smbfs //webs:sohu.hd@10.10.78.10/webs ~/webs/'
 alias www='mount -t smbfs //webs:sohu.hd@10.10.78.10/www ~/www/'
 
-alias rproxy='sudo forever start ~/code/node-proxy/app.js ~/code/node-proxy/config/config.js'
+#alias rproxy='sudo forever start ~/code/node-proxy/app.js ~/code/node-proxy/config/config.js'
+alias rproxy='sudo forever start ~/code/node-proxy/app.js ~/.cfg/rproxy.conf.js'
 alias dns='sudo forever start ~/code/node-dnsproxy/dns.js'
 
 alias min='grunt pulses:min'
