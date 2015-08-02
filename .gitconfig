@@ -1,0 +1,21 @@
+[user]
+	name = creep
+	email = creep.wei@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+    lf = log master.. --name-only --pretty=format:''
+    diff = --no-pager diff
+[color]
+    branch = auto
+    status = auto
+    diff = auto
+[core]
+	editor = /usr/bin/vim
+	pager = less -F -X
+[diff]
+    external = git_vim_diff.sh
+[push]
+	default = simple
