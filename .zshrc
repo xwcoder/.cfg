@@ -109,7 +109,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-if [[ ! $TERM =~ screen ]]; then
-    exec tmux new -s work
-    #exec mux start work
-fi
+#if [[ ! $TERM =~ screen ]]; then
+#    exec tmux new -s work
+#    #exec mux start work
+#fi

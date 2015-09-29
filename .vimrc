@@ -22,6 +22,7 @@ lang message en_US.UTF-8 "zh_CN.UTF-8   设置消息编码
 filetype off            " vundle required
 "filetype plugin on      " enable loading the plugin for appropriate file type
 "filetype indent on
+set modifiable
 
 "-----------------------------------------------------------------------------
 " platform dependent
@@ -146,6 +147,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'editorconfig-vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'cespare/vim-golang'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'marijnh/tern_for_vim'
 
@@ -169,10 +171,11 @@ let g:vimwiki_list=[{'path' : '~/Dropbox/vimwiki/wiki',
 " winmanager
 "-----------------------------------------------------------------------------
 "let g:winManagerWindowLayout = "FileExplorer,BufExplorer|TagList"
-let g:winManagerWindowLayout = "FileExplorer,BufExplorer"
+let g:winManagerWindowLayout = "FileExplorer|BufExplorer"
 let g:instant_markdown_autostart = 0 
 "设置winmanager的宽度，默认为25
 "let g:winManagerWidth = 30
+"let g:AutoOpenWinManager=1 "在进入vim时自动打开winmanager
 nmap wm :WMToggle<cr>
 
 "-----------------------------------------------------------------------------
@@ -220,3 +223,7 @@ if exists('$ITERM_PROFILE')
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 end
+
+"-----------------------------------------------------------------------------
+" golang
+"-----------------------------------------------------------------------------
