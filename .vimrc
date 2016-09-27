@@ -20,8 +20,8 @@ lang message en_US.UTF-8 "zh_CN.UTF-8   设置消息编码
 
 "filetype on             " enable file type detection
 filetype off            " vundle required
-"filetype plugin on      " enable loading the plugin for appropriate file type
-"filetype indent on
+filetype plugin on      " enable loading the plugin for appropriate file type
+filetype indent on
 set modifiable
 
 "-----------------------------------------------------------------------------
@@ -109,7 +109,6 @@ if has("autocmd")
     autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 endif
 
-
 "-----------------------------------------------------------------------------
 " folding
 "-----------------------------------------------------------------------------
@@ -133,7 +132,6 @@ map <S-space> :VimwikiToggleListItem<CR>
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 "call vundle#rc()
-
 Plugin 'gmarik/vundle'
 Plugin 'taglist-plus'
 Plugin 'mattn/calendar-vim'
@@ -147,12 +145,33 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'editorconfig-vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'fatih/vim-go'
 Plugin 'cespare/vim-golang'
+Plugin 'scrooloose/syntastic'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'isRuslan/vim-es6'
+Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'majutsushi/tagbar'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'marijnh/tern_for_vim'
-
 call vundle#end()
 filetype plugin indent on
+
+"-----------------------------------------------------------------------------
+" golang
+"-----------------------------------------------------------------------------
+au BufRead,BufNewFile *.go set filetype=go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
 
 "-----------------------------------------------------------------------------
 " omni
@@ -172,11 +191,14 @@ let g:vimwiki_list=[{'path' : '~/Dropbox/vimwiki/wiki',
 "-----------------------------------------------------------------------------
 "let g:winManagerWindowLayout = "FileExplorer,BufExplorer|TagList"
 let g:winManagerWindowLayout = "FileExplorer|BufExplorer"
+"let g:winManagerWindowLayout = "NERDTree|BufExplorer"
 let g:instant_markdown_autostart = 0 
+
 "设置winmanager的宽度，默认为25
 "let g:winManagerWidth = 30
 "let g:AutoOpenWinManager=1 "在进入vim时自动打开winmanager
 nmap wm :WMToggle<cr>
+nmap <F8> :TagbarToggle<CR>
 
 "-----------------------------------------------------------------------------
 " commands
@@ -223,7 +245,3 @@ if exists('$ITERM_PROFILE')
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 end
-
-"-----------------------------------------------------------------------------
-" golang
-"-----------------------------------------------------------------------------
