@@ -155,9 +155,14 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'othree/yajs.vim'
 Plugin 'othree/es.next.syntax.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'posva/vim-vue'
 "Plugin 'majutsushi/tagbar'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'marijnh/tern_for_vim'
+"Plugin 'leafgarland/typescript-vim'
+Plugin 'HerringtonDarkholme/yats.vim'
+"Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Plugin 'docker/docker'
 call vundle#end()
 filetype plugin indent on
 
@@ -172,6 +177,8 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
+
+au BufRead,BufNewFile *.vue set filetype=vue
 
 "-----------------------------------------------------------------------------
 " omni
@@ -228,6 +235,10 @@ let g:vim_markdown_no_default_key_mappings=1
 "-----------------------------------------------------------------------------
 let g:jsx_ext_required = 0
 
+"-----------------------------------------------------------------------------
+" typescript
+"-----------------------------------------------------------------------------
+au BufRead,BufNewFile *.ts set filetype=typescript
 
 "-----------------------------------------------------------------------------
 " tmux

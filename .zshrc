@@ -45,7 +45,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nvm tmux tmuxinator)
+#plugins=(git nvm tmux tmuxinator)
+plugins=(git nvm)
 
 # User configuration
 
@@ -85,7 +86,8 @@ alias cdsohu='cd ~/code/sohu/upload'
 alias cdp='cd ~/code/player'
 alias cdd='cd ~/Dropbox'
 alias nconfig='mvim /usr/local/nginx/conf/nginx.conf'
-alias shadow='nohup ~/shadow/shadowsocks &'
+#alias shadow='nohup ~/shadow/shadowsocks &'
+alias shadow='nohup ~/shadow/shadowsocks-nodejs/bin/sslocal &'
 
 # alias m173='mount -t smbfs //webs:sohu.hd@10.10.78.10/173 ~/173/'
 # alias webs='mount -t smbfs //webs:sohu.hd@10.10.78.10/webs ~/webs/'
@@ -96,7 +98,7 @@ alias www='mount -t smbfs //webs:sohu.hd@10.10.78.10/www ~/www/'
 
 #alias rproxy='sudo forever start ~/code/node-proxy/app.js ~/code/node-proxy/config/config.js'
 #alias rproxy='sudo forever start ~/code/node-proxy/app.js ~/.cfg/rproxy.conf.js'
-alias rproxy='sudo pm2 start ~/code/node-proxy/app.js -- ~/.cfg/rproxy.conf.js'
+alias rproxy='sudo pm2 start ~/code/node-proxy/index.js -- ~/.cfg/rproxy.conf.js'
 alias dns='sudo forever start ~/code/node-dnsproxy/dns.js'
 
 alias min='grunt pulses:min'
@@ -116,3 +118,12 @@ alias l='ls -CF'
 #    exec tmux new -s work
 #    #exec mux start work
 #fi
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+export NVM_DIR="/Users/creep/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+#export GOPATH="$GOPATH:/Users/creep/code/theway2go"
+
+[[ -s "/Users/creep/.gvm/scripts/gvm" ]] && source "/Users/creep/.gvm/scripts/gvm"

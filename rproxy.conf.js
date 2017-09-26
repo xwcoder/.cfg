@@ -5,7 +5,7 @@ module.exports = {
     {
         name: 'js.tv.itc.cn',
         root: '/Users/creep/code/tv/js',
-        proxy_pass: 'http://61.135.132.52',
+        proxy_pass: 'http://123.126.104.68',
         rewrite: function (filename, req) {
 
             if (/\S+?(_\d{8}).js$/.test(filename)) {
@@ -26,7 +26,7 @@ module.exports = {
     {
         name: 'css.tv.itc.cn',
         root: '/Users/creep/code/tv/css',
-        proxy_pass: 'http://61.135.132.52',
+        proxy_pass: 'http://123.126.104.68',
         setHeader: function (res, req, filename) {
             var exts = ['.eot', '.ttf', '.woff', '.woff2'],
                 ext = path.extname(filename).toLowerCase(),
@@ -43,12 +43,12 @@ module.exports = {
     {
         name: 'img.tv.itc.cn',
         root: '/Users/creep/code/tv/img',
-        proxy_pass: 'http://61.135.132.52',
+        proxy_pass: 'http://123.126.104.68',
     },
     {
         name: 'tv.sohu.com',
         root: '/Users/creep/code/sohu',
-        proxy_pass: 'http://61.135.132.52',
+        proxy_pass: 'http://123.126.104.68',
         rewrite: function (filename) {
 
             if (path.extname(filename) == '.js' && !/\.src\./i.test(filename)) {
@@ -62,7 +62,11 @@ module.exports = {
     {
         name: 'v.tv.sohu.com',
         root: '/Users/creep/code/tv/html',
-        proxy_pass: 'http://61.135.132.52'
+        proxy_pass: 'http://123.126.104.68'
+    },
+    {
+        name: 'aty.itc.cn',
+        root: '/Users/creep/code/player'
     },
     {
         name: 'm.tv.sohu.com',
@@ -71,13 +75,13 @@ module.exports = {
     },
     {
         name: 'm.56.com',
-        root: '/Users/creep/code/sohu',
-        proxy_pass: 'http://60.5.254.10',
+        root: '/Users/creep/code/tv',
+        proxy_pass: 'http://222.138.255.18',
     },
     {
         name: 'baby.56.com',
         root: '/Users/creep/code/sohu',
-        proxy_pass: 'http://61.135.132.52'
+        proxy_pass: 'http://123.126.104.68'
     },
     {
         name: 'opentask.tv.sohu.com',
