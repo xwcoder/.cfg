@@ -58,7 +58,7 @@ if has("gui_running")
   "set lines=27          " window tall and wide, only if gui_running,
   "set columns=95       " or vim under console behaves badly
   set lines=50          " window tall and wide, only if gui_running,
-  set columns=150       " or vim under console behaves badly
+  set columns=160       " or vim under console behaves badly
   set colorcolumn=81
   hi colorcolumn guibg=red
 else
@@ -92,8 +92,8 @@ set guioptions=gLt
 "-----------------------------------------------------------------------------
 set ai                  " autoindent
 set si                  " smartindent
-set tabstop=4           " tab spacing
-"set tabstop=2           " tab spacing for node
+" set tabstop=4           " tab spacing
+set tabstop=2           " tab spacing for node
 set shiftwidth=4        " unify it
 "set shiftwidth=2        " unify it
 set expandtab           "用空格缩进 noexpandtab:用制表符缩进
@@ -129,10 +129,9 @@ map <S-space> :VimwikiToggleListItem<CR>
 "-----------------------------------------------------------------------------
 " vundle 
 "-----------------------------------------------------------------------------
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
-"call vundle#rc()
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'taglist-plus'
 Plugin 'mattn/calendar-vim'
 Plugin 'bufexplorer.zip'
@@ -144,25 +143,23 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'editorconfig-vim'
-Plugin 'mxw/vim-jsx'
 Plugin 'fatih/vim-go'
-Plugin 'cespare/vim-golang'
 Plugin 'scrooloose/syntastic'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'isRuslan/vim-es6'
+" Plugin 'isRuslan/vim-es6'
 Plugin 'othree/yajs.vim'
 Plugin 'othree/es.next.syntax.vim'
+" Plugin 'maxmellon/vim-jsx-pretty'
+" Plugin 'gavocanov/vim-js-indent'
+" Plugin 'mxw/vim-jsx'
+Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
+Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'scrooloose/nerdtree'
-Plugin 'posva/vim-vue'
-"Plugin 'majutsushi/tagbar'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'marijnh/tern_for_vim'
-"Plugin 'leafgarland/typescript-vim'
 Plugin 'HerringtonDarkholme/yats.vim'
-"Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Plugin 'docker/docker'
+Plugin 'maksimr/vim-jsbeautify'
 call vundle#end()
 filetype plugin indent on
 
@@ -178,8 +175,6 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
 
-au BufRead,BufNewFile *.vue set filetype=vue
-
 "-----------------------------------------------------------------------------
 " omni
 "-----------------------------------------------------------------------------
@@ -189,9 +184,13 @@ set completeopt=longest,menu
 "vimwiki
 "-----------------------------------------------------------------------------
 let g:vimwiki_use_mouse=1
-let g:vimwiki_list=[{'path' : '~/Dropbox/vimwiki/wiki',
-            \'path_html' : '~/Dropbox/vimwiki/html/',
-            \'html_header' : '~/Dropbox/vimwiki/template/header.tpl'}]
+" let g:vimwiki_list=[{'path' : '~/Dropbox/vimwiki/wiki',
+"             \'path_html' : '~/Dropbox/vimwiki/html/',
+"             \'html_header' : '~/Dropbox/vimwiki/template/header.tpl'}]
+let g:vimwiki_list=[{'path' : '~/Library/Mobile Documents/com~apple~CloudDocs/vimwiki/wiki',
+            \'path_html' : '~/Library/Mobile Documents/com~apple~CloudDocs/vimwiki/html/',
+            \'html_header' : '~/Library/Mobile Documents/com~apple~CloudDocs/vimwiki/template/header.tpl',
+            \'syntax': 'markdown', 'ext': '.md'}]
 
 "-----------------------------------------------------------------------------
 " winmanager
@@ -199,7 +198,6 @@ let g:vimwiki_list=[{'path' : '~/Dropbox/vimwiki/wiki',
 "let g:winManagerWindowLayout = "FileExplorer,BufExplorer|TagList"
 let g:winManagerWindowLayout = "FileExplorer|BufExplorer"
 "let g:winManagerWindowLayout = "NERDTree|BufExplorer"
-let g:instant_markdown_autostart = 0 
 
 "设置winmanager的宽度，默认为25
 "let g:winManagerWidth = 30
@@ -231,14 +229,33 @@ let g:vim_markdown_initial_foldlevel=1
 let g:vim_markdown_no_default_key_mappings=1
 
 "-----------------------------------------------------------------------------
-" vim-jsx
+" vim-instant-markdown
 "-----------------------------------------------------------------------------
-let g:jsx_ext_required = 0
+let g:instant_markdown_autostart = 0 
+let g:instant_markdown_slow = 1
+let g:instant_markdown_port = 4000
+
+"-----------------------------------------------------------------------------
+" maksimr/vim-jsbeautify
+"-----------------------------------------------------------------------------
+map <c-f> :call JsBeautify()<cr>
 
 "-----------------------------------------------------------------------------
 " typescript
 "-----------------------------------------------------------------------------
 au BufRead,BufNewFile *.ts set filetype=typescript
+au BufRead,BufNewFile *.tsx set filetype=typescript
+
+"-----------------------------------------------------------------------------
+" typescript
+"-----------------------------------------------------------------------------
+au BufRead,BufNewFile *.ts set filetype=typescript
+au BufRead,BufNewFile *.babelrc set filetype=json
+
+"-----------------------------------------------------------------------------
+" vim-jsx
+"-----------------------------------------------------------------------------
+"let g:jsx_ext_required=0
 
 "-----------------------------------------------------------------------------
 " tmux
