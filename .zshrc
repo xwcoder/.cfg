@@ -46,14 +46,16 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git nvm tmux tmuxinator)
-plugins=(git nvm)
+plugins=(git nvm docker)
 
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+#source $HOME/etc/deno.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -80,50 +82,42 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias cdcode='cd ~/code'
-alias cdtv='cd ~/code/tv'
-alias cdsohu='cd ~/code/sohu/upload'
-alias cdp='cd ~/code/player'
-alias cdd='cd ~/Dropbox'
-alias nconfig='mvim /usr/local/nginx/conf/nginx.conf'
-#alias shadow='nohup ~/shadow/shadowsocks &'
-alias shadow='nohup ~/shadow/shadowsocks-nodejs/bin/sslocal &'
-
-# alias m173='mount -t smbfs //webs:sohu.hd@10.10.78.10/173 ~/173/'
-# alias webs='mount -t smbfs //webs:sohu.hd@10.10.78.10/webs ~/webs/'
-
-alias m173='mount -t smbfs //webs:sohu.hd@10.10.78.10/173 ~/173/'
-alias webs='mount -t smbfs //webs:sohu.hd@10.10.78.10/webs ~/webs/'
-alias www='mount -t smbfs //webs:sohu.hd@10.10.78.10/www ~/www/'
-
-#alias rproxy='sudo forever start ~/code/node-proxy/app.js ~/code/node-proxy/config/config.js'
-#alias rproxy='sudo forever start ~/code/node-proxy/app.js ~/.cfg/rproxy.conf.js'
-alias rproxy='sudo pm2 start ~/code/node-proxy/index.js -- ~/.cfg/rproxy.conf.js'
-alias dns='sudo forever start ~/code/node-dnsproxy/dns.js'
-
-alias min='grunt pulses:min'
-alias dist='grunt pulses:ftp-dist'
-alias ftpt='grunt pulses:ftp-test'
-
-alias -s js=mvim
-alias -s html=mvim
-alias -s css=mvim
-alias -s scss=mvim
-
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-#if [[ ! $TERM =~ screen ]]; then
-#    exec tmux new -s work
-#    #exec mux start work
-#fi
+alias cdcode='cd ~/code'
+alias cdsohu='cd ~/code/sohu'
+alias cdtx='cd ~/code/tx'
+alias cdx='cd ~/code/xwcoder'
 
-export PATH="$HOME/.yarn/bin:$PATH"
+export PATH=$HOME/.cfg/bin:$PATH
+export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=/Applications/MacVim.app/Contents/bin:$PATH
 
+## nvm
 export NVM_DIR="/Users/creep/.nvm"
+
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-#export GOPATH="$GOPATH:/Users/creep/code/theway2go"
-
 [[ -s "/Users/creep/.gvm/scripts/gvm" ]] && source "/Users/creep/.gvm/scripts/gvm"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## vscode
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
+## proxy
+setProxy() {
+  export https_proxy=http://127.0.0.1:7890
+  export http_proxy=http://127.0.0.1:7890
+  export all_proxy=socks5://127.0.0.1:7890
+}
+
+unsetProxy() {
+  unset http_proxy
+  unset https_proxy
+  unset no_proxy
+}
+
+alias proxy="setProxy"
+alias unproxy="unsetProxy"
